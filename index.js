@@ -31,8 +31,8 @@ client.on('message', (message) => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase(); // grab first item from array. 'coinflip'
 
-
     if (client.commands.has(command)) {
+        console.log('command recognized!');
         client.commands.get(command).execute(message, args);
     } else {
         message.channel.send('I... don\'t think I\'m allowed to do that...');
@@ -41,49 +41,5 @@ client.on('message', (message) => {
 
 
 });
-
-// const processCommand = (command, args, message) => {
-//     if (command === 'hello') {
-//         message.channel.send(`Hello ${message.author.username}`);
-//     } else if (command === 'coinflip') {
-//         const randomNum = Math.floor(Math.random() * 2);
-//         const result = randomNum === 0 ? 'heads' : 'tails';
-//         message.channel.send(result);
-//     } else if (command === 'serverinfo') {
-//         message.channel.send(`Server Name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`)
-//     } else {
-//         message.channel.send('Listen here wise guy I\'m not programmed to do that');
-//     }
-// };
-
-// const commands = {
-//     hello: {
-//         execute: (message) => {
-//             message.channel.send(`Hello ${message.author.username}`);
-//         },
-//         info: '!hax:hello - Says hello!'
-//     },
-//     coinflip: {
-//         execute: (message) => {
-//             const randomNum = Math.floor(Math.random() * 2);
-//             const result = randomNum === 0 ? 'heads' : 'tails';
-//             message.channel.send(result);
-//         },
-//         info: '!hax:coinflip - settle disputes with a coinflip'
-//     },
-//     serverinfo: {
-//         execute: (message) => {
-//             message.channel.send(`Server Name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`)
-//         },
-//         info: '!hax:serverinfo - outputs basic info about the server'
-
-//     },
-//     help: {
-//         execute: (message) => {
-
-//         },
-//         info: '!hax:help - Display all available commands'
-//     }
-// }
 
 client.login(process.env.token);

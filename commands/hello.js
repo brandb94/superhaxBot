@@ -1,6 +1,6 @@
 module.exports = {
     name: 'hello',
-    description:'greets user',
+    description:'!hax:hello - Says hello!',
     execute: (message, args = '') => {
         message.channel.send(`Hello ${message.author.username}`);
     }
