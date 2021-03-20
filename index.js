@@ -19,7 +19,7 @@ client.once('ready', () => {
     console.log('ready!');
 });
 
-client.on('message', (message) => {
+client.on('message', async (message) => {
     if (!message.content.startsWith(prefix) || message.author.bot ) return;
 
     console.log(`user: ${message.author.username} content: ${message.content}`);
@@ -33,7 +33,7 @@ client.on('message', (message) => {
 
     if (client.commands.has(command)) {
         console.log('command recognized!');
-        client.commands.get(command).execute(message, args);
+        await client.commands.get(command).execute(message, args);
     } else {
         message.channel.send('I... don\'t think I\'m allowed to do that...');
         console.log('Command not found.')
