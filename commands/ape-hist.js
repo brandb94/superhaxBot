@@ -59,7 +59,11 @@ module.exports = {
 
 
         try{
-            const priceHistory = await yahooStockPrices.getHistoricalPrices(startMonth, startDay, startYear, endMonth, endDay, endYear, stockSymbol, frequency);
+            const priceHistory = await yahooStockPrices.getHistoricalPrices(
+                startMonth, startDay, startYear, 
+                endMonth, endDay, endYear, 
+                stockSymbol, frequency
+            );
             console.log(priceHistory);
 
             const [highPrice, lowPrice, highVolume, lowVolume] = getHighAndLowPrice(priceHistory);
