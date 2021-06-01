@@ -1,12 +1,10 @@
 const $ = require('cheerio');
-const puppeteer = require('puppeteer');
+const axios = require('axios');
 
 const getAfterHoursPrice = async (url) => {
-    const browser = await puppeteer.launch({headless: true});
-    const page = await browser.newPage();
-    await page.goto(url);
+    const html = await axios.get(url);
 
-    const html = await page.evaluate(() => document.body.innerHTML);
+   // const html = await page.evaluate(() => document.body.innerHTML);
     // const aferHoursPrice = $('span.symbol-page-header__pricing-price', html).text();
     const afterHoursPrice = $('div.css-65fur7', html).text();
 
