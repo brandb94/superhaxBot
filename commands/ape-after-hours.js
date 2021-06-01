@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 const getAfterHoursPrice = async (url) => {
     const browser = await puppeteer.launch({headless: true});
     const page = await browser.newPage();
-    await page.goto('https://robinhood.com/stocks/BB');
+    await page.goto(url);
 
     const html = await page.evaluate(() => document.body.innerHTML);
     // const aferHoursPrice = $('span.symbol-page-header__pricing-price', html).text();
